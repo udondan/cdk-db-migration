@@ -52,7 +52,7 @@ export class Stack extends cdk.Stack {
       down: `DROP TABLE ${dbName}.${tableName};`,
     });
 
-    const m2 = new Migration.Athena(this, 'M2', {
+    new Migration.Athena(this, 'M2', {
       dependsOn: [m1],
       workGroup: workgroup.name,
       up: `
