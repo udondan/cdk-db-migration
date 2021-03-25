@@ -25,12 +25,12 @@ export class Athena extends Base {
     super(scope, id, props);
   }
 
-  protected getType() {
+  protected makeType() {
     return 'Athena';
   }
 
-  protected getProperties(props: Props): LambdaProps {
-    const properties: LambdaProps = super.getProperties(props);
+  protected makeProperties(props: Props): LambdaProps {
+    const properties: LambdaProps = super.makeProperties(props);
     properties['WorkGroup'] = (props as AthenaProps).workGroup || 'primary';
     return properties;
   }

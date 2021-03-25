@@ -75,8 +75,8 @@ export class Base extends cdk.Construct {
 
     const queryProps: cdk.CustomResourceProps = {
       serviceToken: this.lambda.functionArn,
-      resourceType: `${resourceType}-${this.getType()}`,
-      properties: this.getProperties(props),
+      resourceType: `${resourceType}-${this.makeType()}`,
+      properties: this.makeProperties(props),
     };
 
     const query = new cdk.CustomResource(this, `DbMigration${id}`, queryProps);
@@ -90,14 +90,14 @@ export class Base extends cdk.Construct {
     }
   }
 
-  protected getProperties(_: Props): LambdaProps {
+  protected makeProperties(_: Props): LambdaProps {
     return {
       Up: this.up,
       Down: this.down,
     };
   }
 
-  protected getType() {
+  protected makeType() {
     return 'Base';
   }
 }
