@@ -1,2 +1,2 @@
 export { Athena, AthenaProps } from './athena';
-export { Base, Props } from './base';
+export { Base, Props, LambdaProps } from './base';
