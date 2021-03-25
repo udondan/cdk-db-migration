@@ -20,6 +20,7 @@
     "@aws-cdk/aws-lambda": "1.x",
     "@aws-cdk/core": "1.x",
     "cdk-athena": "^2.0.2",
-    "cdk-db-migration": "file:.."
+    "cdk-db-migration": "file:..",
+    "cdk-iam-floyd": "^0.146.0"
   }
 }
