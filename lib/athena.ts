@@ -29,9 +29,9 @@ export class Athena extends Base {
     return 'Athena';
   }
 
-  protected getProperties(props: AthenaProps): LambdaProps {
+  protected getProperties(props: Props): LambdaProps {
     const properties: LambdaProps = super.getProperties(props);
-    properties['WorkGroup'] = props.workGroup || 'primary';
+    properties['WorkGroup'] = (props as AthenaProps).workGroup || 'primary';
     return properties;
   }
 }
