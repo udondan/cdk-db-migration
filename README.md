@@ -41,7 +41,6 @@ Every migration requires a query for *up* and *down* migrations. `up` is execute
 
 A full example including creating bucket, database, workgroup and permissions can be found in the [test directory](https://github.com/udondan/cdk-db-migration/blob/master/test/lib/index.ts).
 
-
 ## Notes
 
 **No modifications**: The construct will refuse to update any existing migration, because this is not how migrations work. Add another migration or first delete the migration, then add the modified statement.
