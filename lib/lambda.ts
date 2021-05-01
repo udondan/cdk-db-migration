@@ -38,7 +38,7 @@ export function ensureLambda(
     functionName: `${stack.stackName}-${lambdaName}`,
     role: role,
     description: 'Custom CFN resource: Manages DB migrations',
-    runtime: lambda.Runtime.NODEJS_10_X,
+    runtime: lambda.Runtime.NODEJS_14_X,
     handler: 'index.handler',
     code: lambda.Code.fromAsset(path.join(__dirname, '../lambda/code.zip')),
     timeout: timeout || cdk.Duration.seconds(30),
