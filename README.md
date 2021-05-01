@@ -72,6 +72,6 @@ const m2 = new Migration.Athena(this, 'M2', {
    [npm]: https://www.npmjs.com/package/cdk-db-migration
    [PyPI]: https://pypi.org/project/cdk-db-migration/
    [NuGet]: https://www.nuget.org/packages/CDK.DB.Migration/
-   [docs]: https://awscdk.io/packages/cdk-db-migration@1.0.0
+   [docs]: https://awscdk.io/packages/cdk-db-migration@1.1.0
    [source]: https://github.com/udondan/cdk-db-migration
    [license]: https://github.com/udondan/cdk-db-migration/blob/master/LICENSE
