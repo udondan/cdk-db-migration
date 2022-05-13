@@ -1,26 +1,25 @@
-import glue = require('@aws-cdk/aws-glue');
-import kms = require('@aws-cdk/aws-kms');
-import s3 = require('@aws-cdk/aws-s3');
-import * as cdk from '@aws-cdk/core';
+import * as aws_glue from '@aws-cdk/aws-glue-alpha';
+import { aws_kms, aws_s3, RemovalPolicy, Stack, StackProps, Tags } from 'aws-cdk-lib';
 import { EncryptionOption, WorkGroup } from 'cdk-athena';
 import * as statement from 'cdk-iam-floyd';
+import { Construct } from 'constructs';
 
 import * as Migration from '../../lib';
 
-export class Stack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+export class TestStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
     const tableName = `test_table`;
     const dbName = this.stackName.toLowerCase();
 
-    const bucket = new s3.Bucket(this, 'Bucket', {
-      encryptionKey: kms.Alias.fromAliasName(this, 'Key', 'aws/s3'),
+    const bucket = new aws_s3.Bucket(this, 'Bucket', {
+      encryptionKey: aws_kms.Alias.fromAliasName(this, 'Key', 'aws/s3'),
       autoDeleteObjects: true,
-      removalPolicy: cdk.RemovalPolicy.DESTROY,
+      removalPolicy: RemovalPolicy.DESTROY,
     });
 
-    const db = new glue.Database(this, 'Database', {
+    const db = new aws_glue.Database(this, 'Database', {
       databaseName: dbName,
     });
 

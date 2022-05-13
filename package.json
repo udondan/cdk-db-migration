@@ -46,35 +46,25 @@
       "python": {
         "distName": "cdk-db-migration",
         "module": "cdk_db_migration"
-      },
-      "dotnet": {
-        "namespace": "CDK.DB.Migration",
-        "packageId": "CDK.DB.Migration"
       }
     }
   },
   "devDependencies": {
-    "@aws-cdk/aws-cloudformation": "^1.50.0",
-    "@aws-cdk/aws-glue": "^1.50.0",
-    "@aws-cdk/aws-iam": "^1.50.0",
-    "@aws-cdk/aws-lambda": "^1.50.0",
-    "@aws-cdk/core": "^1.50.0",
-    "@types/aws-lambda": "^8.10.72",
-    "@types/js-yaml": "^4.0.0",
-    "@types/node": "^14.14.35",
-    "aws-lambda": "^1.0.6",
-    "aws-sdk": "^2.866.0",
-    "jsii": "^1.25.0",
-    "jsii-pacmak": "^1.25.0",
-    "ts-node": "^9.1.1",
-    "typescript": "~4.2.3"
+    "aws-cdk-lib": "^2.0.0",
+    "constructs": "^10.0.0",
+    "@types/aws-lambda": "^8.10.97",
+    "@types/js-yaml": "^4.0.5",
+    "@types/node": "^17.0.33",
+    "aws-lambda": "^1.0.7",
+    "aws-sdk": "^2.1134.0",
+    "jsii": "^1.58.0",
+    "jsii-pacmak": "^1.58.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4",
+    "aws-cloudformation-custom-resource": "^3.1.0"
   },
   "peerDependencies": {
-    "@aws-cdk/aws-cloudformation": "^1.50.0",
-    "@aws-cdk/aws-glue": "^1.50.0",
-    "@aws-cdk/aws-iam": "^1.50.0",
-    "@aws-cdk/aws-lambda": "^1.50.0",
-    "@aws-cdk/core": "^1.50.0",
-    "constructs": "^3.2.80"
+    "aws-cdk-lib": "^2.0.0",
+    "constructs": "^10.0.0"
   }
 }
