@@ -1,4 +1,4 @@
-import cdk = require('@aws-cdk/core');
+import { Construct } from 'constructs';
 
 import { Base, LambdaProps, Props } from './base';
 
@@ -21,7 +21,7 @@ export class Athena extends Base {
   /**
    * Defines a new DB Migration
    */
-  constructor(scope: cdk.Construct, id: string, props: AthenaProps) {
+  constructor(scope: Construct, id: string, props: AthenaProps) {
     super(scope, id, props);
   }
 

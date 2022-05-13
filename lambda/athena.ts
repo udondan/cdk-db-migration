@@ -1,12 +1,12 @@
 import { CustomResource, Event, LambdaEvent, StandardLogger } from 'aws-cloudformation-custom-resource';
 import { Callback, Context } from 'aws-lambda';
-import AWS = require('aws-sdk');
+import { Athena, AWSError } from 'aws-sdk';
 
-const athena = new AWS.Athena();
+const athena = new Athena();
 
 let log: StandardLogger;
 
-export function Athena(
+export function AthenaQuery(
   event: LambdaEvent,
   context: Context,
   callback: Callback,
@@ -47,13 +47,13 @@ function Delete(event: any): Promise<Event> {
 function runQuery(query: string, workGroup: string): Promise<Event> {
   return new Promise(async function (resolve, reject) {
     console.log('Executing query...');
-    const params: AWS.Athena.StartQueryExecutionInput = {
+    const params: Athena.StartQueryExecutionInput = {
       QueryString: query,
       WorkGroup: workGroup,
     };
     athena.startQueryExecution(
       params,
-      function (err: AWS.AWSError, data: AWS.Athena.StartQueryExecutionOutput) {
+      function (err: AWSError, data: Athena.StartQueryExecutionOutput) {
         if (err) return reject(err);
         waitForResult(data.QueryExecutionId!)
           .then((result) => {
@@ -67,12 +67,12 @@ function runQuery(query: string, workGroup: string): Promise<Event> {
   });
 }
 
-function waitForResult(query: AWS.Athena.QueryExecutionId): Promise<Event> {
+function waitForResult(query: Athena.QueryExecutionId): Promise<Event> {
   return new Promise(function (resolve, reject) {
     const check = setInterval(function () {
       console.log('Pulling query status...');
 
-      const params: AWS.Athena.GetQueryExecutionInput = {
+      const params: Athena.GetQueryExecutionInput = {
         QueryExecutionId: query,
       };
 

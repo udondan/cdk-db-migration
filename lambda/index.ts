@@ -1,7 +1,7 @@
 import { LambdaEvent, StandardLogger } from 'aws-cloudformation-custom-resource';
 import { Callback, Context } from 'aws-lambda';
 
-import { Athena } from './athena';
+import { AthenaQuery } from './athena';
 
 const logger = new StandardLogger();
 
@@ -16,7 +16,7 @@ export const handler = function (
     (event.ResourceType as string).replace(/^Custom::DB-Migration-/, '')
   ) {
     case 'Athena': {
-      Athena(event, context, callback, logger);
+      AthenaQuery(event, context, callback, logger);
       break;
     }
     default: {

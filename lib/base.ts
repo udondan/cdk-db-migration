@@ -1,6 +1,5 @@
-import iam = require('@aws-cdk/aws-iam');
-import lambda = require('@aws-cdk/aws-lambda');
-import cdk = require('@aws-cdk/core');
+import { aws_iam, aws_lambda, CustomResource, CustomResourceProps, Duration, StackProps } from 'aws-cdk-lib';
+import { Construct } from 'constructs';
 
 import { ensureLambda } from './lambda';
 
@@ -13,7 +12,7 @@ export interface LambdaProps {
 /**
  * Manages Database Migration
  */
-export interface Props extends cdk.StackProps {
+export interface Props extends StackProps {
   /**
    * Migration to apply, when the resource is created
    */
@@ -27,29 +26,29 @@ export interface Props extends cdk.StackProps {
   /**
    * One or more cdk constructs the migration depends on
    */
-  readonly dependsOn?: cdk.Construct | cdk.Construct[];
+  readonly dependsOn?: Construct | Construct[];
 
   /**
    * Timeout of the lambda function, which is used to run the migrations
    *
    * @default - 30 seconds
    */
-  readonly timeout?: cdk.Duration;
+  readonly timeout?: Duration;
 }
 
 /**
  * Defines a new DB Migration
  */
-export class Base extends cdk.Construct {
+export class Base extends Construct {
   /**
    * The lambda function which backs the custom resource
    */
-  public readonly lambda: lambda.IFunction;
+  public readonly lambda: aws_lambda.IFunction;
 
   /**
    * The IAM role, used by the lambda function which backs the custom resource
    */
-  public readonly role: iam.Role;
+  public readonly role: aws_iam.Role;
   /**
    * Migration to apply, when the resource is deleted
    */
@@ -63,7 +62,7 @@ export class Base extends cdk.Construct {
   /**
    * Defines a new DB Migration
    */
-  constructor(scope: cdk.Construct, id: string, props: Props) {
+  constructor(scope: Construct, id: string, props: Props) {
     super(scope, id);
 
     const lambdaResources = ensureLambda(this);
@@ -73,13 +72,13 @@ export class Base extends cdk.Construct {
     this.up = props.up.trim();
     this.down = props.down.trim();
 
-    const queryProps: cdk.CustomResourceProps = {
+    const queryProps: CustomResourceProps = {
       serviceToken: this.lambda.functionArn,
       resourceType: `${resourceType}-${this.makeType()}`,
       properties: this.makeProperties(props),
     };
 
-    const query = new cdk.CustomResource(this, `DbMigration${id}`, queryProps);
+    const query = new CustomResource(this, `DbMigration${id}`, queryProps);
 
     if (typeof props.dependsOn !== 'undefined') {
       if (Array.isArray(props.dependsOn)) {

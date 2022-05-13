@@ -3,22 +3,35 @@
 [![Source](https://img.shields.io/badge/Source-GitHub-blue?logo=github)][source]
 [![Test](https://github.com/udondan/cdk-db-migration/workflows/Test/badge.svg)](https://github.com/udondan/cdk-db-migration/actions?query=workflow%3ATest)
 [![GitHub](https://img.shields.io/github/license/udondan/cdk-db-migration)][license]
-[![Docs](https://img.shields.io/badge/awscdk.io-cdk--db--migration-orange)][docs]
+[![Docs](https://img.shields.io/badge/Construct%20Hub-cdk--db--migration-orange)][docs]
 
 [![npm package](https://img.shields.io/npm/v/cdk-db-migration?color=brightgreen)][npm]
 [![PyPI package](https://img.shields.io/pypi/v/cdk-db-migration?color=brightgreen)][PyPI]
-[![NuGet package](https://img.shields.io/nuget/v/CDK.DB.Migration?color=brightgreen)][NuGet]
 
 ![Downloads](https://img.shields.io/badge/-DOWNLOADS:-brightgreen?color=gray)
 [![npm](https://img.shields.io/npm/dt/cdk-db-migration?label=npm&color=blueviolet)][npm]
 [![PyPI](https://img.shields.io/pypi/dm/cdk-db-migration?label=pypi&color=blueviolet)][PyPI]
-[![NuGet](https://img.shields.io/nuget/dt/CDK.DB.Migration?label=nuget&color=blueviolet)][NuGet]
 
 [AWS CDK] L3 construct for managing DB migrations. Currently implemented DBMS:
 
 - Athena
 
 I created this construct because [CloudFormations Glue Table](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-table.html) doesn't support `TBLPROPERTIES`. I needed an alternative to create a table. Since creating a table is a DB migration, I created a migration construct instead of a simple table construct, which would be hard to impossible to update.
+
+## Installation
+
+This package has peer dependencies, which need to be installed along in the expected version.
+
+For TypeScript/NodeJS, add these to your `dependencies` in `package.json`. For Python, add these to your `requirements.txt`:
+
+- cdk-db-migration
+- aws-cdk-lib (^2.0.0)
+- constructs (^10.0.0)
+
+## CDK compatibility
+
+- Version 2.x is compatible with the CDK v2.
+- Version 1.x is compatible with the CDK v1. There won't be regular updates for this.
 
 ## Usage
 
@@ -71,7 +84,6 @@ const m2 = new Migration.Athena(this, 'M2', {
    [custom CloudFormation resource]: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-custom-resources.html
    [npm]: https://www.npmjs.com/package/cdk-db-migration
    [PyPI]: https://pypi.org/project/cdk-db-migration/
-   [NuGet]: https://www.nuget.org/packages/CDK.DB.Migration/
-   [docs]: https://awscdk.io/packages/cdk-db-migration@1.1.0
+   [docs]: https://constructs.dev/packages/cdk-db-migration
    [source]: https://github.com/udondan/cdk-db-migration
    [license]: https://github.com/udondan/cdk-db-migration/blob/master/LICENSE
