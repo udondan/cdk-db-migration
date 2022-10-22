@@ -33,5 +33,5 @@ jobs:
         env:
           MERGE_LABELS: dependencies
           UPDATE_LABELS: dependencies
-          GITHUB_TOKEN: ${{ secrets.OVERRIDE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MERGE_DELETE_BRANCH: true
