@@ -5,9 +5,7 @@ concurrency: automerge
 
 on:
   pull_request_target:
-    types: [labeled]
-  pull_request:
-    types: [synchronize]
+    types: [labeled, synchronize]
 
 jobs:
   automerge_dependabot:
