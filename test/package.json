@@ -18,7 +18,7 @@
     "aws-cdk-lib": "2.x",
     "@aws-cdk/aws-glue-alpha": "2.47.0-alpha.0",
     "cdk-athena": "^3.0.0",
-    "cdk-iam-floyd": "^0.498.0",
+    "cdk-iam-floyd": "^0.499.0",
     "cdk-db-migration": "file:.."
   }
 }
