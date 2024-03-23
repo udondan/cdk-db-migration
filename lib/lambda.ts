@@ -34,7 +34,7 @@ export function ensureLambda(scope: Construct, timeout?: Duration): result {
     functionName: `${stack.stackName}-${lambdaName}`,
     role: role,
     description: 'Custom CFN resource: Manages DB migrations',
-    runtime: aws_lambda.Runtime.NODEJS_14_X,
+    runtime: aws_lambda.Runtime.NODEJS_20_X,
     handler: 'index.handler',
     code: aws_lambda.Code.fromAsset(path.join(__dirname, '../lambda/code.zip')),
     timeout: timeout || Duration.seconds(30),
