@@ -6,8 +6,8 @@ lambda/*
 !lambda/*.ts
 !lambda/build
 !lambda/package.json
+!lambda/package-lock.json
 **/*.js
 **/*.d.ts
 **/cdk.out
-**/package-lock.json
 tsconfig.tsbuildinfo
