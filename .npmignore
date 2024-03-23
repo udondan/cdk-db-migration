@@ -14,3 +14,5 @@ dist
 !.jsii
 
 test
+
+renovate.json

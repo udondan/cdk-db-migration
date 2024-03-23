@@ -1,15 +1,17 @@
 ---
 name: Test
 
-concurrency: test
+concurrency:
+  group: test
+  cancel-in-progress: false
 
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
   workflow_dispatch:
 
 jobs:

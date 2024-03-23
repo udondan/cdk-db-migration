@@ -41,7 +41,7 @@ import * as Migration from 'cdk-db-migration';
 const m1 = new Migration.Athena(this, 'M1', {
   up: 'CREATE EXTERNAL TABLE foo ...;',
   down: 'DROP TABLE foo;',
- });
+});
 
 const m2 = new Migration.Athena(this, 'M2', {
   dependsOn: m1,
@@ -50,9 +50,9 @@ const m2 = new Migration.Athena(this, 'M2', {
 });
 ```
 
-Every migration requires a query for *up* and *down* migrations. `up` is executed when the migration is created. `down` is executed when the migration is destroyed.
+Every migration requires a query for _up_ and _down_ migrations. `up` is executed when the migration is created. `down` is executed when the migration is destroyed.
 
-A full example including creating bucket, database, workgroup and permissions can be found in the [test directory](https://github.com/udondan/cdk-db-migration/blob/master/test/lib/index.ts).
+A full example including creating bucket, database, workgroup and permissions can be found in the [test directory](https://github.com/udondan/cdk-db-migration/blob/main/test/lib/index.ts).
 
 ## Notes
 
@@ -81,9 +81,8 @@ const m2 = new Migration.Athena(this, 'M2', {
 **Best solution for your use case?**: While the construct is capable of managing the state of a database over time, have a good thought if you really want to do this with CDK/CloudFormation. CloudFormation can ony handle up to 500 resources in a stack, so this (minus all the other resources in your stack) is going to be your hard limit of migrations. Migrations are executed by a Lambda function. Since the maximum execution time of a Lambda function is 15 minutes, migrations cannot exceed this limit.
 
    [AWS CDK]: https://aws.amazon.com/cdk/
-   [custom CloudFormation resource]: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-custom-resources.html
    [npm]: https://www.npmjs.com/package/cdk-db-migration
    [PyPI]: https://pypi.org/project/cdk-db-migration/
    [docs]: https://constructs.dev/packages/cdk-db-migration
    [source]: https://github.com/udondan/cdk-db-migration
-   [license]: https://github.com/udondan/cdk-db-migration/blob/master/LICENSE
+   [license]: https://github.com/udondan/cdk-db-migration/blob/main/LICENSE
